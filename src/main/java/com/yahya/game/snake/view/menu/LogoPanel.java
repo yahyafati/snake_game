@@ -1,4 +1,4 @@
-package com.yahya.game.snake.view;
+package com.yahya.game.snake.view.menu;
 
 import com.yahya.game.snake.controller.Utils;
 import com.yahya.game.snake.enums.ScaleType;

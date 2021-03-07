@@ -1,18 +1,15 @@
-package com.yahya.game.snake.view;
+package com.yahya.game.snake.view.menu;
 
-import com.yahya.game.snake.constants.Colors;
+import com.yahya.game.snake.view.SnakeCanvas;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainGameMenu extends JPanel{
+public class MainGameMenu extends Menu{
 
-    private final SnakeCanvas canvas;
 
     public MainGameMenu(SnakeCanvas canvas) {
-        this.canvas = canvas;
-        setLayout(new GridBagLayout());
-        setOpaque(false);
+        super(canvas);
         init();
     }
 
@@ -22,18 +19,18 @@ public class MainGameMenu extends JPanel{
 
         buttonsPanel.setLayout(new GridLayout(-1, 1,0,10));
 
-        //    private GameButton generateButton;
         GameButton startGameButton = new GameButton("New Game");
-        startGameButton.addActionListener(e -> canvas.getController().startNewGame());
+        startGameButton.addActionListener(e -> getCanvas().getController().startNewGame());
         GameButton highScoreButton = new GameButton("High Scores");
+        highScoreButton.addActionListener(e -> GameMenuBar.setMenu(MenuType.HIGH_SCORE_MENU));
         GameButton aboutButton = new GameButton("About");
-        GameButton githubButton = new GameButton("Github");
+//        GameButton githubButton = new GameButton("Github");
         GameButton exitButton = new GameButton("Exit");
 
         buttonsPanel.add(startGameButton);
         buttonsPanel.add(highScoreButton);
         buttonsPanel.add(aboutButton);
-        buttonsPanel.add(githubButton);
+//        buttonsPanel.add(githubButton);
         buttonsPanel.add(exitButton);
 
         add(buttonsPanel);

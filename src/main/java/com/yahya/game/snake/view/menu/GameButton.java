@@ -1,7 +1,7 @@
-package com.yahya.game.snake.view;
+package com.yahya.game.snake.view.menu;
 
-import com.yahya.game.snake.view.ButtonUI;
-import com.yahya.game.snake.view.GameMenuBar;
+import com.yahya.game.snake.view.menu.ButtonUI;
+import com.yahya.game.snake.view.menu.GameMenuBar;
 
 import javax.swing.*;
 import java.awt.*;

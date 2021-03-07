@@ -1,38 +1,36 @@
-package com.yahya.game.snake.view;
+package com.yahya.game.snake.view.menu;
 
-import com.yahya.game.snake.constants.Colors;
 import com.yahya.game.snake.enums.GameState;
+import com.yahya.game.snake.view.SnakeCanvas;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class InGameMenu extends JPanel{
-
-    private final SnakeCanvas canvas;
+public class InGameMenu extends Menu {
 
     private GameButton resumeGameButton;
 
     private final ScorePanel scorePanel;
 
+    private JPanel buttonsPanel;
+
     public InGameMenu(SnakeCanvas canvas) {
-        this.canvas = canvas;
+        super(canvas);
         scorePanel = new ScorePanel(canvas);
-        setLayout(new GridBagLayout());
-        setOpaque(false);
         init();
     }
 
     void init() {
-        JPanel buttonsPanel = new JPanel();
+        buttonsPanel = new JPanel();
         buttonsPanel.setOpaque(false);
         buttonsPanel.setLayout(new GridLayout(-1, 1,0,10));
 
         resumeGameButton = new GameButton("Resume Game");
-        resumeGameButton.addActionListener(e -> canvas.getController().resumeGame());
+        resumeGameButton.addActionListener(e -> getCanvas().getController().resumeGame());
         GameButton startGameButton = new GameButton("New Game");
-        startGameButton.addActionListener(e -> canvas.getController().startNewGame());
+        startGameButton.addActionListener(e -> getCanvas().getController().startNewGame());
         GameButton backToMenuGameButton = new GameButton("Back To Menu");
-        backToMenuGameButton.addActionListener(e -> canvas.getController().gotoMainMenu());
+        backToMenuGameButton.addActionListener(e -> getCanvas().getController().gotoMainMenu());
 
         buttonsPanel.add(scorePanel);
         buttonsPanel.add(resumeGameButton);
@@ -42,6 +40,10 @@ public class InGameMenu extends JPanel{
     }
 
     public void resetResumeButton() {
-        resumeGameButton.setVisible(canvas.getController().getGameState() == GameState.PAUSED);
+        if (getCanvas().getController().getGameState() == GameState.PAUSED) {
+            buttonsPanel.add(resumeGameButton, 1);
+        }else  {
+            buttonsPanel.remove(resumeGameButton);
+        }
     }
 }

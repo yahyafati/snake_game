@@ -1,4 +1,4 @@
-package com.yahya.game.snake.view;
+package com.yahya.game.snake.view.menu;
 
 import com.yahya.game.snake.constants.Colors;
 import com.yahya.game.snake.constants.Fonts;

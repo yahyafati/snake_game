@@ -5,6 +5,8 @@ import com.yahya.game.snake.constants.Colors;
 import com.yahya.game.snake.constants.Fonts;
 import com.yahya.game.snake.controller.GameController;
 import com.yahya.game.snake.enums.TileStatus;
+import com.yahya.game.snake.view.menu.GameMenuBar;
+import com.yahya.game.snake.view.menu.InGameMenu;
 
 import javax.swing.*;
 import java.awt.*;
