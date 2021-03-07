@@ -2,11 +2,11 @@ package com.yahya.game.snake.controller;
 
 import com.yahya.game.snake.view.SnakeCanvas;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.*;
 import java.awt.*;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class AudioController {
 
@@ -31,7 +31,11 @@ public class AudioController {
 
     public void backgroundPlay() {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/audio/snake.wav"));
+            InputStream audioSrc = getClass().getResourceAsStream("/audio/snake.wav");
+            //add buffer for mark/reset support
+            InputStream bufferedIn = new BufferedInputStream(audioSrc);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
+
             Clip backgroundClip = AudioSystem.getClip();
             backgroundClip.open(audioInputStream);
             backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -41,6 +45,22 @@ public class AudioController {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    void play(String fileName) {
+
+        try {
+            InputStream audioSrc = getClass().getResourceAsStream("/audio/" + fileName);
+            //add buffer for mark/reset support
+            InputStream bufferedIn = new BufferedInputStream(audioSrc);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void eat() {
@@ -54,6 +74,19 @@ public class AudioController {
 //        }
         Toolkit.getDefaultToolkit().beep();
     }
+
+    public void gameover() {
+        play("gameover.wav");
+//        try {
+//            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/audio/gameover.wav"));
+//            Clip eatingClip = AudioSystem.getClip();
+//            eatingClip.open(audioInputStream);
+//            eatingClip.start();
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+    }
+
 
 
 }

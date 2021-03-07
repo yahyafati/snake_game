@@ -195,6 +195,7 @@ public class GameController {
         gamePlayer.cancel(false);
         gameState = GameState.GAME_OVER;
 
+        AudioController.getInstance(canvas).gameover();
         ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
         ses.schedule(this::showGameMenu, 500, TimeUnit.MILLISECONDS);
     }

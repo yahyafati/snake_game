@@ -115,6 +115,8 @@ public class SnakeCanvas extends JPanel {
 
                         if (tileStatuses[i][j] == TileStatus.EMPTY) {
                             g2.fillRect(j*tileSize, i*tileSize, tileSize, tileSize);
+//                            g2.setColor(Color.white);
+//                            g2.drawRect(j*tileSize, i*tileSize, tileSize, tileSize);
                         } else {
                             Image img = Utils.getImage(tileStatuses[i][j], tileSize);
                             g2.drawImage(img, j * tileSize, i * tileSize, tileSize, tileSize,

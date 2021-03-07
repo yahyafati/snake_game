@@ -14,7 +14,7 @@ public class MainFrame extends JFrame {
     private MainFrame() {
         MAIN_FRAME = this;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(813, 789);
+        setSize(820, 800);
         setResizable(false);
         setLocationRelativeTo(null);
 //        setUndecorated(true);
