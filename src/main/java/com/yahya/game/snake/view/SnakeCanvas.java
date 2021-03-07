@@ -27,9 +27,10 @@ public class SnakeCanvas extends JPanel {
     private final GameController controller;
 
     private final GameMenuBar menuBar;
+    private final InGameMenu inGameMenu;
 
     public SnakeCanvas() {
-        this(10);
+        this(20);
     }
 
     public SnakeCanvas(int tileSize) {
@@ -41,6 +42,7 @@ public class SnakeCanvas extends JPanel {
         setLayout(null);
 
         menuBar = new GameMenuBar(this);
+        inGameMenu = new InGameMenu(this);
         Dimension size = menuBar.getSize();
 
         int startX = MainFrame.getInstance().getWidth()/2 - size.width/2;
@@ -132,8 +134,6 @@ public class SnakeCanvas extends JPanel {
                 g2.drawString(caption, startX, 100);
             }
         }
-
-
     }
 
     public Snake getSnake() {

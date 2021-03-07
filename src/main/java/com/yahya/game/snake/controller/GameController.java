@@ -167,7 +167,13 @@ public class GameController {
         },0, 100, TimeUnit.MILLISECONDS);
     }
 
+    public void gotoMainMenu() {
+        gameState = GameState.NOTHING;
+        showGameMenu();
+    }
+
     private void showGameMenu() {
+        canvas.getMenuBar().resetGameMenu();
         canvas.getMenuBar().resetResumeButton();
         canvas.getMenuBar().setVisible(true);
         canvas.repaint();
@@ -209,4 +215,6 @@ public class GameController {
     public int getScore() {
         return canvas.getSnake().getPoints().size();
     }
+
+
 }
