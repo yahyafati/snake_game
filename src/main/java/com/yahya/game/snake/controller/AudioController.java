@@ -34,6 +34,7 @@ public class AudioController {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/audio/snake.wav"));
             Clip backgroundClip = AudioSystem.getClip();
             backgroundClip.open(audioInputStream);
+            backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
             bgClipControl = (FloatControl) backgroundClip.getControl(FloatControl.Type.MASTER_GAIN);
             bgClipControl.setValue(-15f);
             backgroundClip.start();

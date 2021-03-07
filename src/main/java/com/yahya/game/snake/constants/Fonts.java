@@ -4,8 +4,10 @@ import java.awt.*;
 import java.awt.font.TextAttribute;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,21 +29,12 @@ public class Fonts {
         if (registered) {
             return;
         }
-        final URL resource = Fonts.class.getResource("/fonts");
         try {
-            File file = new File(resource.toURI());
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            Arrays.stream(Objects.requireNonNull(file.listFiles())).forEach(font -> {
-                try {
-//                    Font createdFont;
-                    ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, font));
-//                    System.out.println(createdFont.getFamily());
-                } catch (FontFormatException | IOException e) {
-                    e.printStackTrace();
-                }
-            });
-//            Arrays.stream(ge.getAvailableFontFamilyNames()).forEach(System.out::println);
-        } catch (URISyntaxException e) {
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,
+                    Fonts.class.getResourceAsStream("/fonts/EvilEmpire-4BBVK.ttf"))
+            );
+        } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
         registered = true;
