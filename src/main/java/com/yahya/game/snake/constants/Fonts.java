@@ -33,9 +33,9 @@ public class Fonts {
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             Arrays.stream(Objects.requireNonNull(file.listFiles())).forEach(font -> {
                 try {
-                    Font createdFont;
-                    ge.registerFont(createdFont = Font.createFont(Font.TRUETYPE_FONT, font));
-                    System.out.println(createdFont.getFamily());
+//                    Font createdFont;
+                    ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, font));
+//                    System.out.println(createdFont.getFamily());
                 } catch (FontFormatException | IOException e) {
                     e.printStackTrace();
                 }

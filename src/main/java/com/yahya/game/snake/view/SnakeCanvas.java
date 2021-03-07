@@ -4,6 +4,7 @@ import com.yahya.game.snake.controller.Snake;
 import com.yahya.game.snake.constants.Colors;
 import com.yahya.game.snake.constants.Fonts;
 import com.yahya.game.snake.controller.GameController;
+import com.yahya.game.snake.controller.Utils;
 import com.yahya.game.snake.enums.TileStatus;
 import com.yahya.game.snake.view.menu.GameMenuBar;
 import com.yahya.game.snake.view.menu.InGameMenu;
@@ -11,6 +12,7 @@ import com.yahya.game.snake.view.menu.InGameMenu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.ImageObserver;
 
 import static com.yahya.game.snake.constants.CONSTANTS.*;
 
@@ -101,6 +103,9 @@ public class SnakeCanvas extends JPanel {
                 int cols = tileStatuses[0].length;
                 for (int i = 0; i < rows; i++) {
                     for (int j = 0; j < cols; j++) {
+
+
+
                         switch (tileStatuses[i][j]) {
                             case EMPTY -> g2.setColor(Colors.PRIMARY_COLOR);
                             case SNAKE_HEAD -> g2.setColor(snakeHeadColor);
@@ -108,11 +113,20 @@ public class SnakeCanvas extends JPanel {
                             case FOOD -> g2.setColor(foodColor);
                         }
 
-                        if (tileStatuses[i][j] == TileStatus.FOOD) {
-                            g2.fillOval(j*tileSize, i*tileSize, tileSize, tileSize);
-                        } else {
+                        if (tileStatuses[i][j] == TileStatus.EMPTY) {
                             g2.fillRect(j*tileSize, i*tileSize, tileSize, tileSize);
+                        } else {
+                            Image img = Utils.getImage(tileStatuses[i][j], tileSize);
+                            g2.drawImage(img, j * tileSize, i * tileSize, tileSize, tileSize,
+                                    (img1, infoFlags, x, y, width, height) -> false);
                         }
+
+
+//                        if (tileStatuses[i][j] == TileStatus.FOOD) {
+//                            g2.fillOval(j*tileSize, i*tileSize, tileSize, tileSize);
+//                        } else {
+//                            g2.fillRect(j*tileSize, i*tileSize, tileSize, tileSize);
+//                        }
                     }
                 }
                 g2.setFont(Fonts.SPACED_EVIL_EMPIRE_FONT().deriveFont(50f));

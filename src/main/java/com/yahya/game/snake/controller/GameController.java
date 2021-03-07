@@ -60,9 +60,9 @@ public class GameController {
     }
 
     void createSnake() {
-        canvas.getSnake().addPoint(11, 5);
-        for (int i = 10; i > 0; i--) {
-            canvas.getSnake().addPoint(i, 5);
+        canvas.getSnake().addPoint(3, 3);
+        for (int i = 2; i > 0; i--) {
+            canvas.getSnake().addPoint(i, 3);
         }
     }
     void generateGame() {
@@ -140,6 +140,7 @@ public class GameController {
         boolean isFood = isFoodTile(snakeHead);
         canvas.getSnake().moveForward();
         if (isFood) {
+            AudioController.getInstance(canvas).eat();
             canvas.getSnake().getPoints().add(lastPoint);
             createFood();
         } else {
@@ -193,7 +194,10 @@ public class GameController {
         saveHighScore(score);
         gamePlayer.cancel(false);
         gameState = GameState.GAME_OVER;
-        showGameMenu();
+
+        ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
+        ses.schedule(this::showGameMenu, 2, TimeUnit.SECONDS);
+//        showGameMenu();
     }
 
     public Scores getHighScores() {

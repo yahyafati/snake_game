@@ -1,5 +1,7 @@
 package com.yahya.game.snake.view;
 
+import com.yahya.game.snake.controller.AudioController;
+
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
@@ -38,11 +40,7 @@ public class MainFrame extends JFrame {
         SnakeCanvas canvas = new SnakeCanvas();
         panel.add(canvas, BorderLayout.CENTER);
 
-//        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/snake.wav"));
-//        Clip clip = AudioSystem.getClip();
-//        clip.open(audioInputStream);
-//        clip.start();
-
+        AudioController.getInstance(canvas).backgroundPlay();
 
     }
 
