@@ -1,5 +1,8 @@
 package com.yahya.game.snake;
 
+import com.yahya.game.snake.constants.Fonts;
+import com.yahya.game.snake.view.MainFrame;
+
 import javax.swing.*;
 
 public class Main {
