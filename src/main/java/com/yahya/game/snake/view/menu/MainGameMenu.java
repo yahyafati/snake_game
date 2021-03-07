@@ -26,6 +26,7 @@ public class MainGameMenu extends Menu{
         GameButton aboutButton = new GameButton("About");
 //        GameButton githubButton = new GameButton("Github");
         GameButton exitButton = new GameButton("Exit");
+        exitButton.addActionListener(e -> getCanvas().getController().exitGame());
 
         buttonsPanel.add(startGameButton);
         buttonsPanel.add(highScoreButton);

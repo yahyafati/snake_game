@@ -6,7 +6,9 @@ import com.yahya.game.snake.enums.MoveDirection;
 import com.yahya.game.snake.enums.SnakeDirection;
 import com.yahya.game.snake.enums.TileStatus;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Executors;
@@ -217,4 +219,8 @@ public class GameController {
     }
 
 
+    public void exitGame() {
+        JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(canvas);
+        mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+    }
 }
