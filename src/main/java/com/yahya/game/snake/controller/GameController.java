@@ -1,20 +1,23 @@
 package com.yahya.game.snake.controller;
 
-import com.yahya.game.snake.view.SnakeCanvas;
 import com.yahya.game.snake.enums.GameState;
 import com.yahya.game.snake.enums.MoveDirection;
 import com.yahya.game.snake.enums.SnakeDirection;
 import com.yahya.game.snake.enums.TileStatus;
+import com.yahya.game.snake.view.SnakeCanvas;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import java.io.*;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class GameController {
 
@@ -27,6 +30,7 @@ public class GameController {
 
     public GameController(SnakeCanvas canvas) {
         this.canvas = canvas;
+        getHighScores();
         keyEventQueue = new LinkedList<>();
     }
 
@@ -181,10 +185,49 @@ public class GameController {
         canvas.repaint();
     }
 
+
+
     private void gameOver() {
+        int score = getScore();
+
+        saveHighScore(score);
         gamePlayer.cancel(false);
         gameState = GameState.GAME_OVER;
         showGameMenu();
+    }
+
+    public Scores getHighScores() {
+        try (FileInputStream file = new FileInputStream("scores");
+             ObjectInputStream in = new ObjectInputStream(file); ) {
+            Scores scores = (Scores) in.readObject();
+            if(!Scores.isInitialized) {
+                Scores.setInstance(scores);
+            }
+            return scores;
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private void saveHighScore(int score) {
+        Scores.getInstance().getScores().add(score);
+        Scores.getInstance().setScores(
+                Scores.getInstance().getScores()
+                        .stream()
+                        .sorted(Comparator.reverseOrder())
+                        .limit(10)
+                        .collect(Collectors.toList())
+        );
+        try(FileOutputStream file = new FileOutputStream("scores");
+            ObjectOutputStream out = new ObjectOutputStream(file);)
+        {
+            out.writeObject(Scores.getInstance());
+        }
+        catch(IOException ex)
+        {
+            ex.printStackTrace();
+        }
     }
 
     public void startStopGame() {

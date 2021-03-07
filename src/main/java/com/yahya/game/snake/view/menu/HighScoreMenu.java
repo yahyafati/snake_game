@@ -6,6 +6,7 @@ import com.yahya.game.snake.view.SnakeCanvas;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
+import java.util.Comparator;
 
 public class HighScoreMenu extends Menu {
 
@@ -22,12 +23,12 @@ public class HighScoreMenu extends Menu {
         highScore.setUI(new TextPanelUI("High scores"));
         highScore.setPreferredSize(new Dimension(getWidth(), 50));
         highScorePanel = new JPanel();
-        highScorePanel.setLayout(new GridLayout(-1, 1, 5,0));
+//        highScorePanel.setLayout(new GridLayout(-1, 1, 5,0));
+        highScorePanel.setLayout(new BoxLayout(highScorePanel, BoxLayout.Y_AXIS));
         highScorePanel.setOpaque(false);
-        for (int i = 0; i < 10; i++) {
-            highScorePanel.add(new ScoreLabel(i+1, (int) (Math.random()*1000)));
-        }
-
+//        for (int i = 0; i < 10; i++) {
+//            highScorePanel.add(new ScoreLabel(i+1, (int) (Math.random()*1000)));
+//        }
         JScrollPane scrollPane = new JScrollPane(highScorePanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.getVerticalScrollBar().setOpaque(false);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -84,5 +85,15 @@ public class HighScoreMenu extends Menu {
         add(highScore, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(backToMenuGameButton, BorderLayout.SOUTH);
+    }
+
+    void populateList() {
+        highScorePanel.removeAll();
+        getCanvas().getController()
+                .getHighScores()
+                .getScores()
+                .stream()
+                .sorted(Comparator.reverseOrder())
+                .forEach(integer -> highScorePanel.add(new ScoreLabel(integer)));
     }
 }

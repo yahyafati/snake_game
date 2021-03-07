@@ -51,7 +51,10 @@ public class GameMenuBar extends JPanel {
         switch (menuType) {
             case MAIN_MENU -> gameMenuBar.add(gameMenuBar.mainGameMenu, BorderLayout.CENTER);
             case IN_GAME_MENU -> gameMenuBar.add(gameMenuBar.inGameMenu, BorderLayout.CENTER);
-            case HIGH_SCORE_MENU -> gameMenuBar.add(gameMenuBar.highScoreMenu, BorderLayout.CENTER);
+            case HIGH_SCORE_MENU -> {
+                gameMenuBar.highScoreMenu.populateList();
+                gameMenuBar.add(gameMenuBar.highScoreMenu, BorderLayout.CENTER);
+            }
         }
         gameMenuBar.repaint();
     }

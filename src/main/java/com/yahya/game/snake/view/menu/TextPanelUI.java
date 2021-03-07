@@ -25,6 +25,7 @@ public class TextPanelUI extends BasicPanelUI {
     public void installUI(JComponent c) {
         super.installUI(c);
         c.setOpaque(false);
+//        c.setMaximumSize(new Dimension(-1, 50));
     }
 
     @Override

@@ -9,12 +9,11 @@ import java.awt.*;
 public class ScoreLabel extends JLabel {
 
     private final int score;
-    private final int index;
+//    private final int index;
 
-    public ScoreLabel(int index, int score) {
-        super(index + ". " + score + "");
+    public ScoreLabel(int score) {
         this.score = score;
-        this.index = index;
+//        this.index = index;
 
         setSize(new Dimension(GameMenuBar.WIDTH, 50));
         setPreferredSize(new Dimension(GameMenuBar.WIDTH, 50));
@@ -46,9 +45,9 @@ public class ScoreLabel extends JLabel {
         FontMetrics fm = g2.getFontMetrics();
         int startX = 10;
         int startY = (h+ fm.getAscent()) / 2;
-        g2.drawString(index + ".", startX, startY);
-
-        startX += fm.stringWidth("88. ");
+//        g2.drawString(index + ".", startX, startY);
+//
+//        startX += fm.stringWidth("88. ");
         g.drawString(score + "", startX, startY);
     }
 

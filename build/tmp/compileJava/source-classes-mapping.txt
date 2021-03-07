@@ -18,23 +18,25 @@ com/yahya/game/snake/enums/MoveDirection.java
  com.yahya.game.snake.enums.MoveDirection
 com/yahya/game/snake/view/menu/TextPanelUI.java
  com.yahya.game.snake.view.menu.TextPanelUI
-com/yahya/game/snake/constants/CONSTANTS.java
- com.yahya.game.snake.constants.CONSTANTS
 com/yahya/game/snake/enums/ScaleType.java
  com.yahya.game.snake.enums.ScaleType
+com/yahya/game/snake/constants/CONSTANTS.java
+ com.yahya.game.snake.constants.CONSTANTS
+com/yahya/game/snake/constants/Colors.java
+ com.yahya.game.snake.constants.Colors
 com/yahya/game/snake/view/MainFrame.java
  com.yahya.game.snake.view.MainFrame
 com/yahya/game/snake/view/menu/ButtonUI.java
  com.yahya.game.snake.view.menu.ButtonUI
-com/yahya/game/snake/constants/Colors.java
- com.yahya.game.snake.constants.Colors
+com/yahya/game/snake/controller/Snake.java
+ com.yahya.game.snake.controller.Snake
+ com.yahya.game.snake.controller.Snake$1
 com/yahya/game/snake/view/menu/MenuType.java
  com.yahya.game.snake.view.menu.MenuType
 com/yahya/game/snake/enums/TileStatus.java
  com.yahya.game.snake.enums.TileStatus
-com/yahya/game/snake/controller/Snake.java
- com.yahya.game.snake.controller.Snake
- com.yahya.game.snake.controller.Snake$1
+com/yahya/game/snake/controller/Scores.java
+ com.yahya.game.snake.controller.Scores
 com/yahya/game/snake/view/SnakeCanvas.java
  com.yahya.game.snake.view.SnakeCanvas
  com.yahya.game.snake.view.SnakeCanvas$1
