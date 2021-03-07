@@ -1,2 +1,2 @@
-# snake_game
+# Snake Game
 Yet Another Snake Game
