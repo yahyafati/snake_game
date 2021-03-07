@@ -4,6 +4,9 @@ import com.yahya.game.snake.view.SnakeCanvas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class MainGameMenu extends Menu{
 
@@ -24,6 +27,13 @@ public class MainGameMenu extends Menu{
         GameButton highScoreButton = new GameButton("High Scores");
         highScoreButton.addActionListener(e -> GameMenuBar.setMenu(MenuType.HIGH_SCORE_MENU));
         GameButton aboutButton = new GameButton("About");
+        aboutButton.addActionListener(e -> {
+            try {
+                Desktop.getDesktop().browse(new URI("https://github.com/navy87/snake_game"));
+            } catch (IOException | URISyntaxException ioException) {
+                ioException.printStackTrace();
+            }
+        });
 //        GameButton githubButton = new GameButton("Github");
         GameButton exitButton = new GameButton("Exit");
         exitButton.addActionListener(e -> getCanvas().getController().exitGame());

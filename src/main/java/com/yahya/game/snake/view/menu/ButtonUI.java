@@ -95,7 +95,7 @@ public class ButtonUI extends MetalButtonUI implements java.io.Serializable,
         String caption = b.getText();
         int x = (d.width - fm.stringWidth(caption)) / 2;
         int y = (d.height + fm.getAscent()) / 2;
-        g2d.drawString(caption, fm.getAscent(), y);
+        g2d.drawString(caption, x, y);
 //        super.paintText(g, c, b.getBounds(), caption);
     }
 
