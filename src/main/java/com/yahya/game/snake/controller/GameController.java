@@ -196,8 +196,7 @@ public class GameController {
         gameState = GameState.GAME_OVER;
 
         ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
-        ses.schedule(this::showGameMenu, 2, TimeUnit.SECONDS);
-//        showGameMenu();
+        ses.schedule(this::showGameMenu, 500, TimeUnit.MILLISECONDS);
     }
 
     public Scores getHighScores() {
