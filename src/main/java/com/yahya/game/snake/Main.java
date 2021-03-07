@@ -5,8 +5,9 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
+        Fonts.REGISTER_FONTS();
         SwingUtilities.invokeLater(() -> {
-            MainFrame mainFrame = new MainFrame();
+            MainFrame mainFrame = MainFrame.getInstance();
             mainFrame.setVisible(true);
         });
     }

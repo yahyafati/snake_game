@@ -1,11 +1,16 @@
 package com.yahya.game.snake;
 
+import com.sun.tools.javac.Main;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
 
-    public MainFrame() {
+    private static MainFrame MAIN_FRAME;
+
+    private MainFrame() {
+        MAIN_FRAME = this;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(813, 789);
         setResizable(false);
@@ -15,14 +20,21 @@ public class MainFrame extends JFrame {
         init();
     }
 
+    public static MainFrame getInstance() {
+        if (MAIN_FRAME == null) {
+            new MainFrame();
+        }
+        return MAIN_FRAME;
+    }
+
     void init() {
         JPanel panel = (JPanel) getContentPane();
         panel.setLayout(new BorderLayout());
 
         SnakeCanvas canvas = new SnakeCanvas();
         panel.add(canvas, BorderLayout.CENTER);
-        MenuBar menuBar = new MenuBar(canvas);
-        panel.add(menuBar, BorderLayout.NORTH);
+//        GameMenuBar gameMenuBar = new GameMenuBar(canvas);
+//        panel.add(gameMenuBar, BorderLayout.NORTH);
 
     }
 

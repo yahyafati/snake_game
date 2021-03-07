@@ -13,7 +13,7 @@ import static com.yahya.game.snake.CONSTANTS.*;
 public class SnakeCanvas extends JPanel {
 
     public final int tileSize;
-    private final Color bgColor;
+//    private final Color bgColor;
 
     private Color snakeBodyColor = Color.WHITE;
     private Color snakeHeadColor = Color.RED;
@@ -31,10 +31,18 @@ public class SnakeCanvas extends JPanel {
 
     public SnakeCanvas(int tileSize) {
         this.tileSize = tileSize;
-        this.bgColor = Color.DARK_GRAY;
-        setBackground(bgColor);
+        setBackground(Colors.PRIMARY_COLOR);
         snake = new Snake();
         setKeyBinding();
+        setLayout(null);
+
+        GameMenuBar menuBar = new GameMenuBar(this);
+        Dimension size = menuBar.getSize();
+
+        int startX = MainFrame.getInstance().getWidth()/2 - size.width/2;
+        int startY = MainFrame.getInstance().getHeight()/2 - size.height/2;
+        menuBar.setBounds(startX,startY, size.width, size.height);
+        add(menuBar);
     }
 
     int row() {
@@ -134,7 +142,7 @@ public class SnakeCanvas extends JPanel {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 switch (tileStatuses[i][j]) {
-                    case EMPTY -> g2.setColor(bgColor);
+                    case EMPTY -> g2.setColor(Colors.PRIMARY_COLOR);
                     case SNAKE_HEAD -> g2.setColor(snakeHeadColor);
                     case SNAKE_BODY -> g2.setColor(snakeBodyColor);
                     case FOOD -> g2.setColor(foodColor);
