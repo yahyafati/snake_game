@@ -13,6 +13,23 @@ We all know Snake. No need for an introduction. So, this is that Snake Game made
 
 ## Why? Why Snake?
 
-Why not?
+>Why not?
 
-*This was a great project which helped me in developing my OOP skills both technically and theoretically.*
+Also, it made me understand many new things and explore familiar topics in more depth.
+
+1. Design Patterns
+    1.  Model-View-Controller (MVC)
+    2. Template Method
+    3. Adapter
+    4. Facade
+2. Object Oriented Programming
+    1. Abstraction
+    2. Encapsulation
+    3. Inheritance
+4. Multi-Thread Management
+    1. Prioritization and Scheduling
+    2. Synchronization
+    3. Thread Communication
+5. Game Physics
+    1. Collision Detection
+    2. Vector Manipulation
